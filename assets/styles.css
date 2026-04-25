@@ -1,0 +1,55 @@
+:root {
+  /* Warm neutral system */
+  --bg: oklch(0.985 0.005 80);
+  --surface: oklch(0.965 0.008 75);
+  --ink: oklch(0.18 0.012 60);
+  --ink-2: oklch(0.42 0.012 60);
+  --ink-3: oklch(0.58 0.012 60);
+  --rule: oklch(0.86 0.01 70);
+  --placeholder-a: oklch(0.94 0.008 70);
+  --placeholder-b: oklch(0.97 0.006 70);
+  /* Swiss-red, restrained */
+  --accent: oklch(0.52 0.18 25);
+
+  --sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display-serif: "Newsreader", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+body { font-family: var(--sans); font-size: 16px; }
+a { -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--accent); color: #fff; }
+
+.hd-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 18px; border-radius: 2px; text-decoration: none;
+  font-size: 14px; letter-spacing: -0.005em;
+  transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.hd-btn-primary { background: var(--ink); color: var(--bg); }
+.hd-btn-primary:hover { background: var(--accent); }
+.hd-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.hd-btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+@keyframes hd-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hd-nav a:not([href="#invest"]) { display: none; }
+  .hd-hero-grid, .hd-loc-grid, .hd-struct-grid, .hd-cta-grid, .hd-team-grid, .hd-footer { grid-template-columns: 1fr !important; }
+  .hd-pillars, .hd-stats, .hd-meta-row, .hd-specs { grid-template-columns: 1fr 1fr !important; }
+  .hd-phase-row { grid-template-columns: auto 1fr !important; }
+  .hd-phase-row > :last-child { grid-column: 1 / -1 !important; }
+  .hd-bench { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 600px) {
+  .hd-stats, .hd-meta-row, .hd-specs, .hd-pillars { grid-template-columns: 1fr !important; }
+  .hd-stats > div, .hd-meta-row > div, .hd-specs > li, .hd-pillars > div {
+    border-right: none !important; padding-left: 0 !important;
+  }
+}
